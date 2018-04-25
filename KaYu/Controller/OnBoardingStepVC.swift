@@ -9,23 +9,29 @@
 import UIKit
 
 class OnBoardingStepVC: UIViewController {
-
+  
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var validateButton: UIButton!
   
+  var step: OnBoardingStep!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.titleLabel?.text = step.title
+    self.descriptionLabel?.text = step.description
+    self.validateButton?.isHidden = !step.isLastStep
     
   }
   
   func updateOnBoarding(title: String, description: String, isLastStep: Bool) {
-    
+
     self.titleLabel?.text = title
     self.descriptionLabel?.text = description
     self.validateButton?.isHidden = !isLastStep
   }
-  
+
   @IBAction func validateButtonClicked(_ sender: Any) {
     
   }

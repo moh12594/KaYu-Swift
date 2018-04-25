@@ -12,24 +12,29 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  
+  lazy var viewControllers = [OnBoardingStepVC]()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let pageViewController = UIPageViewController()
+    let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     
     let steps = [OnBoardingStep(title: "Bienvenue dans l'app", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "Des trucs de oufs !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "YOLO Maggle !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: true)]
     
-    var viewControllers = [OnBoardingStepVC]()
+    
     
     for step in steps {
       if let stepVC = storyboard.instantiateViewController(withIdentifier: ON_BOARDING) as? OnBoardingStepVC {
-        stepVC.updateOnBoarding(title: step.title, description: step.description, isLastStep: step.isLastStep)
-        viewControllers.append(stepVC)
+        stepVC.step = step
+//        stepVC.updateOnBoarding(title: step.title, description: step.description, isLastStep: step.isLastStep)
+        self.viewControllers.append(stepVC)
       }
       
-      pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
+      pageViewController.dataSource = self
+      
+      pageViewController.setViewControllers([viewControllers[0]], direction: .forward, animated: true, completion: nil)
       window?.rootViewController = pageViewController
     }
     
@@ -60,6 +65,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-
+  
 }
 
+extension AppDelegate: UIPageViewControllerDataSource {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    if let stepVC = viewController as? OnBoardingStepVC {
+      if let index = self.viewControllers.index(of: stepVC) {
+        let indexBefore = index - 1
+        if indexBefore >= 0 {
+          return viewControllers[indexBefore]
+        }
+      }
+    }
+    return nil
+  }
+  
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    if let stepVC = viewController as? OnBoardingStepVC {
+      if let index = self.viewControllers.index(of: stepVC) {
+        let indexAfter = index + 1
+        if indexAfter <= (viewControllers.count - 1) {
+          return viewControllers[indexAfter]
+        }
+      }
+    }
+    return nil
+  }
+  
+  
+}
