@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KaYu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,6 +22,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137" y="36"/>
+        </scene>
+        <!--On Boarding StepVC-->
+        <scene sceneID="LFm-zC-ryG">
+            <objects>
+                <viewController storyboardIdentifier="on_boarding" id="Tcd-Xi-ZLC" customClass="OnBoardingStepVC" customModule="KaYu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vn7-iI-Cdi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uud-QA-jmK">
+                                <rect key="frame" x="15" y="576" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jU9-Hr-6YB">
+                                <rect key="frame" x="164.5" y="622" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="validateButtonClicked:" destination="Tcd-Xi-ZLC" eventType="touchUpInside" id="bMF-MT-yvH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViM-64-8rQ">
+                                <rect key="frame" x="166.5" y="35" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jU9-Hr-6YB" firstAttribute="top" secondItem="uud-QA-jmK" secondAttribute="bottom" constant="25" id="1i4-5k-4Qg"/>
+                            <constraint firstItem="uud-QA-jmK" firstAttribute="leading" secondItem="DGd-gX-8lH" secondAttribute="leading" constant="15" id="Eco-Mc-GqJ"/>
+                            <constraint firstItem="DGd-gX-8lH" firstAttribute="bottom" secondItem="jU9-Hr-6YB" secondAttribute="bottom" constant="15" id="OUr-3G-nlW"/>
+                            <constraint firstItem="DGd-gX-8lH" firstAttribute="trailing" secondItem="uud-QA-jmK" secondAttribute="trailing" constant="15" id="gve-ja-U7d"/>
+                            <constraint firstItem="jU9-Hr-6YB" firstAttribute="centerX" secondItem="vn7-iI-Cdi" secondAttribute="centerX" id="nZm-l0-xgX"/>
+                            <constraint firstItem="ViM-64-8rQ" firstAttribute="top" secondItem="DGd-gX-8lH" secondAttribute="top" constant="15" id="qrf-h8-DQH"/>
+                            <constraint firstItem="ViM-64-8rQ" firstAttribute="centerX" secondItem="vn7-iI-Cdi" secondAttribute="centerX" id="t2W-UH-fb2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DGd-gX-8lH"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="uud-QA-jmK" id="Bjy-uH-xfw"/>
+                        <outlet property="titleLabel" destination="ViM-64-8rQ" id="h2j-xz-Sci"/>
+                        <outlet property="validateButton" destination="jU9-Hr-6YB" id="ixw-m3-P9P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ks-Wy-cOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="36"/>
         </scene>
     </scenes>
 </document>

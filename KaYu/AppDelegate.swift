@@ -13,9 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let pageViewController = UIPageViewController()
+    
+    
+    let steps = [OnBoardingStep(title: "Bienvenue dans l'app", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "Des trucs de oufs !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "YOLO Maggle !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: true)]
+    
+    var viewControllers = [OnBoardingStepVC]()
+    
+    for step in steps {
+      if let stepVC = storyboard.instantiateViewController(withIdentifier: ON_BOARDING) as? OnBoardingStepVC {
+        stepVC.updateOnBoarding(title: step.title, description: step.description, isLastStep: step.isLastStep)
+        viewControllers.append(stepVC)
+      }
+      
+      pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
+      window?.rootViewController = pageViewController
+    }
+    
+    
+    
     return true
   }
 
