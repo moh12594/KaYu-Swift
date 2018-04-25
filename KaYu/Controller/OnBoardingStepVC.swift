@@ -24,26 +24,14 @@ class OnBoardingStepVC: UIViewController {
     self.validateButton?.isHidden = !step.isLastStep
     
   }
-  
-  func updateOnBoarding(title: String, description: String, isLastStep: Bool) {
-
-    self.titleLabel?.text = title
-    self.descriptionLabel?.text = description
-    self.validateButton?.isHidden = !isLastStep
-  }
 
   @IBAction func validateButtonClicked(_ sender: Any) {
-    
+    let identifier = HOME_ID
+    if let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: identifier) {
+      
+      PreferenceManager.storeOnBoadingPassed()
+      self.show(tabBarController, sender: sender)
+    }
   }
   
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
-  }
-  */
-
 }

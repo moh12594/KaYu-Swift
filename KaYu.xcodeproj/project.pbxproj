@@ -15,6 +15,7 @@
 		A07DDE4B20906D04004E5895 /* OnBoardingStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DDE4A20906D04004E5895 /* OnBoardingStepVC.swift */; };
 		A07DDE4F20906F79004E5895 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DDE4E20906F79004E5895 /* Constants.swift */; };
 		A07DDE5120907381004E5895 /* OnBoardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DDE5020907381004E5895 /* OnBoardingStep.swift */; };
+		A07DDE532090AA41004E5895 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DDE522090AA41004E5895 /* PreferenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A07DDE4A20906D04004E5895 /* OnBoardingStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStepVC.swift; sourceTree = "<group>"; };
 		A07DDE4E20906F79004E5895 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A07DDE5020907381004E5895 /* OnBoardingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingStep.swift; sourceTree = "<group>"; };
+		A07DDE522090AA41004E5895 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A07DDE4E20906F79004E5895 /* Constants.swift */,
+				A07DDE522090AA41004E5895 /* PreferenceManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				A07DDE4B20906D04004E5895 /* OnBoardingStepVC.swift in Sources */,
 				A07DDE3720906376004E5895 /* AppDelegate.swift in Sources */,
 				A07DDE5120907381004E5895 /* OnBoardingStep.swift in Sources */,
+				A07DDE532090AA41004E5895 /* PreferenceManager.swift in Sources */,
 				A07DDE4F20906F79004E5895 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

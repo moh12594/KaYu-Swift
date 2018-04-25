@@ -20,26 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
-    
-    let steps = [OnBoardingStep(title: "Bienvenue dans l'app", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "Des trucs de oufs !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "YOLO Maggle !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: true)]
-    
-    
-    
-    for step in steps {
-      if let stepVC = storyboard.instantiateViewController(withIdentifier: ON_BOARDING) as? OnBoardingStepVC {
-        stepVC.step = step
-//        stepVC.updateOnBoarding(title: step.title, description: step.description, isLastStep: step.isLastStep)
-        self.viewControllers.append(stepVC)
+    if (PreferenceManager.isOnBoardingPassed()) {
+      let tabBarController = storyboard.instantiateViewController(withIdentifier: HOME_ID)
+      self.window?.rootViewController = tabBarController
+    } else {
+      let steps = [OnBoardingStep(title: "Bienvenue dans l'app", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "Des trucs de oufs !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: false), OnBoardingStep(title: "YOLO Maggle !", description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum", isLastStep: true)]
+      
+      
+      
+      for step in steps {
+        if let stepVC = storyboard.instantiateViewController(withIdentifier: ON_BOARDING) as? OnBoardingStepVC {
+          stepVC.step = step
+          //        stepVC.updateOnBoarding(title: step.title, description: step.description, isLastStep: step.isLastStep)
+          self.viewControllers.append(stepVC)
+        }
+        
+        pageViewController.dataSource = self
+        
+        pageViewController.setViewControllers([viewControllers[0]], direction: .forward, animated: true, completion: nil)
+        window?.rootViewController = pageViewController
       }
-      
-      pageViewController.dataSource = self
-      
-      pageViewController.setViewControllers([viewControllers[0]], direction: .forward, animated: true, completion: nil)
-      window?.rootViewController = pageViewController
     }
-    
-    
-    
+
     return true
   }
 

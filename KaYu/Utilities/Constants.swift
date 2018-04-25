@@ -9,4 +9,4 @@
 import Foundation
 
 let ON_BOARDING = "on_boarding"
-
+let HOME_ID = "home_id"
